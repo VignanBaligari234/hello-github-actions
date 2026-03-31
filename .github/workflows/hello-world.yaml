@@ -1,7 +1,26 @@
+name: hello-world
+
 on: push
 
 jobs:
-  say_hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello, world! "
+      - name: build steps
+        run: echo "hello, demo build!"
+    
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps: 
+      - name: test steps
+        run: echo "test demo!"
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: deploy steps
+        run: echo "deploy demo!"
+
+    
